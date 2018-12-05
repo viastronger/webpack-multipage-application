@@ -1,0 +1,188 @@
+@charset "utf-8";
+
+/*移动端全局样式*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+header,
+input {
+	margin: 0;
+	padding: 0;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	width: auto\9;
+	/* ie9以下 */
+}
+
+
+/*点击阴影*/
+
+*,
+::before,
+::after {
+	padding: 0;
+	margin: 0;
+	/*在移动端特殊的设置 */
+	/*点击高亮效果*/
+	-webkit-tap-highlight-color: transparent;
+	/*设置所有的盒子的宽度以边框开始计算*/
+	-webkit-box-sizing: border-box;
+	/*要兼容webket浏览器内核厂商  这种情况一般是老的移动端浏览器*/
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+	color: #555756;
+	background: transparent;
+}
+
+li {
+	list-style: none;
+}
+
+a img {
+	border: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+	content: "";
+	display: table;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+.clearfix {
+	*zoom: 1;
+	/*IE/7/6*/
+}
+
+input {
+	outline: none;
+	border: 0;
+	-webkit-appearance:none;
+}
+
+input,
+textarea,
+button {
+	font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	border:none;
+	outline: none;
+}
+
+input,
+button {
+	transition: all 0s !important;
+}
+
+
+/* 禁用iPhone中Safari的字号自动调整 */
+
+body,
+html {
+	-webkit-text-size-adjust: none;
+	font-family: 'Microsoft YaHei', 'Hiragino Sans GB', Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
+/*body {*/
+	/*color: #333;*/
+	/*background-color: #f4f4f4;*/
+/*}*/
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+.show {
+	display: block;
+}
+.hide {
+	display: none;
+}
+
