@@ -36,8 +36,8 @@ const devWebpackConfig = {
     ]
   },
   devServer: {
-    // 配置http服务的根目录，以src为开启服务时的根目录
-    contentBase: path.join(__dirname, '../src'),
+    // 配置http服务的根目录，以dist为开启服务时的根目录
+    // contentBase: path.join(__dirname, '../dist'),
     host: 'localhost',
     port: 8080,
     inline: true,
@@ -45,7 +45,7 @@ const devWebpackConfig = {
     open: true,
     proxy: {
       '/': {
-        target: 'https://b-backapi.t.bianlidai.top/v1',//多个空格也不行，真是严格，2333
+        target: 'https://xxx',
         changeOrigin: true,
       }
     }
@@ -61,7 +61,6 @@ const devWebpackConfig = {
   devtool: 'cheap-module-eval-source-map',
   // devtool: 'source-map',
 }
-module.exports = devWebpackConfig
 //检测默认端口是否被占用，使用portfinder插件自动更换端口
 module.exports = new Promise((resolve, reject) => {
   portfinder.basePort = 8080

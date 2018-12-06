@@ -55,8 +55,8 @@ module.exports = {
   entry: utils.getEntry(env),
   output: {
     path: distDir,
-    filename: 'js/[name].[chunkhash].js',
-    chunkFilename: 'js/[name].[chunkhash].js',
+    filename: 'js/[name].[chunkhash:8].js',
+    chunkFilename: 'js/[name].[chunkhash:8].js',
   },
   module: {
     rules: [
