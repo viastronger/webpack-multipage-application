@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const utils = require('./utils')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
@@ -28,6 +29,13 @@ const plugins = [
   new ExtractTextPlugin({
     filename: 'css/[name].[contenthash:8].css',
     allChunks: true,
+  }),
+  //  压缩css
+  new OptimizeCssAssetsPlugin({
+    assetNameRegExp: /\.css$/g,
+    cssProcessor: require('cssnano'),
+    cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
+    canPrint: true
   }),
   new webpack.HashedModuleIdsPlugin(),
   new webpack.optimize.ModuleConcatenationPlugin(),
@@ -73,7 +81,7 @@ module.exports = {
         // loader: 'style-loader!css-loader'
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: "css-loader",
+          use:'css-loader',
           publicPath: "../"
         })
       },
