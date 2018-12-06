@@ -31,7 +31,7 @@ const plugins = [
   }),
   new webpack.HashedModuleIdsPlugin(),
   new webpack.optimize.ModuleConcatenationPlugin(),
-  //  提取公共样式
+  //  提取公共样式/js
   new webpack.optimize.CommonsChunkPlugin("commons"),
   //从node_modules提取第三方库
   new webpack.optimize.CommonsChunkPlugin({
@@ -47,11 +47,11 @@ const plugins = [
     }
   }),
   //从入口文件里提取自定义公共js
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'manifest',
-    minChunks: Infinity, // 可以填数字， 最小值为2，模块被多少个chunk公共引用才被抽取出来成为commons chunk
-    //  Infinity：只有当入口文件（entry chunks） >= 3 才生效，用来在第三方库中分离自定义的公共模块
-  })
+  // new webpack.optimize.CommonsChunkPlugin({
+  //   name: 'manifest',
+  //   minChunks: Infinity, // 可以填数字， 最小值为2，模块被多少个chunk公共引用才被抽取出来成为commons chunk
+  //   //  Infinity：只有当入口文件（entry chunks） >= 3 才生效，用来在第三方库中分离自定义的公共模块
+  // })
 ]
 module.exports = {
   entry: utils.getEntry(env),

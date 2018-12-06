@@ -43,7 +43,8 @@ const getEntry = (env) => {
       inject: true,
       title: outputHtmlName,
       // 每个html引用的js模块，也可以在这里加上vendor等公用模块
-      chunks: ['manifest', 'vendor', entryFileName],
+      // chunks: ['manifest', 'vendor', entryFileName],
+      chunks: ['vendor','commons', entryFileName],
       // chunksSortMode: 'dependency',//如果是单页面应用使用这个就行，上面chunks不需要设置
       minify: minifyParms
     }));
