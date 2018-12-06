@@ -81,7 +81,11 @@ module.exports = {
         // loader: 'style-loader!css-loader'
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use:'css-loader',
+          use:[
+            { loader: 'css-loader', options: { importLoaders: 1 } },
+            {loader: 'postcss-loader',options:{plugins:[require("autoprefixer")("last 100 versions")]}}
+            // 自动添加浏览器前缀的插件
+          ],
           publicPath: "../"
         })
       },
