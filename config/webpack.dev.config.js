@@ -45,7 +45,7 @@ const devWebpackConfig = {
     open: true,
     proxy: {
       '/': {
-        target: 'https://xxx',
+        target: 'https://www.apiopen.top/',
         changeOrigin: true,
       }
     }

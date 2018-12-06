@@ -13,14 +13,13 @@ const a = {
 };
 
 $.ajax({
-  url: 'xxx',
+  url: 'journalismApi',
   contentType: "application/json;charset=utf-8",
-  type: 'post',
+  type: 'get',
   dataType: "json",
-  data: JSON.stringify(a),
+  data:{},
   success: function (res) {
     console.log(res);
-
   }
 })
 console.log(moment().format());

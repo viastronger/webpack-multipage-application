@@ -10,7 +10,7 @@ const a = {
 };
 
 $.ajax({
-    url: 'xxxx',
+    url: 'accountManageController/login',
     contentType: "application/json;charset=utf-8",
     type: 'post',
     dataType: "json",
