@@ -1,0 +1,16 @@
+div {
+  background-color: hotpink;
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+body img {
+  margin: 0 auto;
+  width: 500px;
+}
+body .a {
+  margin: 0 auto;
+  width: 500px;
+  height: 500px;
+  background: url(../images/a-27943.jpg) no-repeat center / cover;
+}

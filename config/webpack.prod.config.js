@@ -31,6 +31,8 @@ const plugins = [
   }),
   new webpack.HashedModuleIdsPlugin(),
   new webpack.optimize.ModuleConcatenationPlugin(),
+  //  提取公共样式
+  new webpack.optimize.CommonsChunkPlugin("commons"),
   //从node_modules提取第三方库
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
