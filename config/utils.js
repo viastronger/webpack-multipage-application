@@ -63,9 +63,8 @@ const getEntry = (env) => {
   }
   return entry;
 }
-const utils = {
+
+module.exports = {
   getEntry,
   plugins
 }
-
-module.exports = utils

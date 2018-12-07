@@ -11,7 +11,7 @@ const a = {
   loginAccount: 'admin1',
   password: '123456'
 };
-
+//第三方插件测试
 $.ajax({
   url: 'journalismApi',
   contentType: "application/json;charset=utf-8",
