@@ -1,1 +1,0 @@
-webpackJsonp([3],{"tb/R":function(t,e){},y5uh:function(t,e){var n=document.getElementsByTagName("html")[0],o=document.documentElement.offsetWidth||document.body.offsetWidth;n.style.fontSize=o>=750?"30px":30*o/750+"px"}});

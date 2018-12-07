@@ -27,42 +27,27 @@ const plugins = [
     parallel: true
   }),
   new ExtractTextPlugin({
-    filename: 'css/[name].[contenthash:8].css',
-    allChunks: true,
+    filename: 'css/[name].[chunkhash:8].css',
+    allChunks: true
   }),
   //  压缩css
   new OptimizeCssAssetsPlugin({
     assetNameRegExp: /\.css$/g,
     cssProcessor: require('cssnano'),
-    cssProcessorOptions: { safe: true, discardComments: { removeAll: true } },
+    cssProcessorOptions: {safe: true, discardComments: {removeAll: true}},
     canPrint: true
   }),
   new webpack.HashedModuleIdsPlugin(),
   new webpack.optimize.ModuleConcatenationPlugin(),
-  //  提取公共样式/js
-  new webpack.optimize.CommonsChunkPlugin("commons"),
-  //从node_modules提取第三方库
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor',
-    minChunks(module) {
-      return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-              path.join(__dirname, '../node_modules')
-          ) === 0
-      )
-    }
-  }),
-  //从入口文件里提取自定义公共js
-  // new webpack.optimize.CommonsChunkPlugin({
-  //   name: 'manifest',
-  //   minChunks: Infinity, // 可以填数字， 最小值为2，模块被多少个chunk公共引用才被抽取出来成为commons chunk
-  //   //  Infinity：只有当入口文件（entry chunks） >= 3 才生效，用来在第三方库中分离自定义的公共模块
-  // })
+
 ]
+
 module.exports = {
   entry: utils.getEntry(env),
+  // entry: Object.assign(utils.getEntry(env), {
+  //   // 用到什么公共lib（例如jquery.js），就把它加进vendor去，目的是将公用库单独提取打包
+  //   'vendor':Object.keys(packagejson.dependencies)
+  // }),
   output: {
     path: distDir,
     filename: 'js/[name].[chunkhash:8].js',
@@ -81,10 +66,20 @@ module.exports = {
         // loader: 'style-loader!css-loader'
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use:[
-            { loader: 'css-loader', options: { importLoaders: 1 } },
-            {loader: 'postcss-loader',options:{plugins:[require("autoprefixer")("last 100 versions")]}}
-            // 自动添加浏览器前缀的插件
+          use: [
+            //  参数importLoaders=1是为了预防css文件里面再import其他css文件，会使得import进来的不会自动加前缀
+            {loader: 'css-loader', options: {importLoaders: 1}},
+            // 自动添加浏览器前缀的插件,
+            {
+              loader: 'postcss-loader', options: {
+                plugins:function(){
+                  return [
+                    require('postcss-import')(),        //一定要写在require("autoprefixer")前面，否则require("autoprefixer")无效
+                    require("autoprefixer")({browsers:['last 100 versions']})
+                  ]
+                }
+              }
+            }
           ],
           publicPath: "../"
         })
@@ -95,7 +90,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpg)$/,
-        loader: 'url-loader?limit=4096&name=images/[name]-[hash:5].[ext]'
+        // loader: 'url-loader?limit=4096&name=images/[name]-[hash:5].[ext]',
+        use:[{
+          loader: "file-loader",
+          options:{
+            name:'[name]-[hash:5].[ext]',
+            outputPath:'./images',
+            publicPath:'../images'
+          }
+        }]
         /*limit：
            表示的是一个阀值,如果当前我们资源中的图片大于4kb就从.js中剥离出来，如果小于4kb打包进.js中
            name:打包出来的图片，放在那个文件夹下，用什么文件名称命名

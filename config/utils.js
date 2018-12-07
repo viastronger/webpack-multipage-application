@@ -8,6 +8,10 @@ let plugins = [
     $: "jquery",
     jQuery: "jquery",
     moment: "moment"
+  }),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: 'common',
+    minChunks:2
   })
 ];
 const getEntry = (env) => {
@@ -28,23 +32,31 @@ const getEntry = (env) => {
   }
   for (let i = 0; i < files.length; i++) {
     let matchs = /js\/(\S*).js/.exec(files[i]);
+    let filename = '';
     entryFileName = outputHtmlName = matchs[1]; //得到apps/question/index这样的文件名
     if (/^_\w*/.test(entryFileName) || /\/_\w*/.test(entryFileName)) {
       continue;
     }
+
     entry[entryFileName] = files[i]
+    if (env == 'prod') {
+      filename = 'html/' + outputHtmlName + '.html'
+    } else {
+      filename = outputHtmlName + '.html'
+    }
     //生成html配置
     plugins.push(new HtmlWebpackPlugin({
       // 打包之后生成出来的html文件名
-      filename: outputHtmlName + '.html',
+      filename: filename,
       // 每个html的模版
       template: './src/html/' + outputHtmlName + '.html',
       // 自动将引用插入body
       inject: true,
+      // favicon: './src/assets/lib/img/favicon.png',
       title: outputHtmlName,
       // 每个html引用的js模块，也可以在这里加上vendor等公用模块
-      // chunks: ['manifest', 'vendor', entryFileName],
-      chunks: ['vendor','commons', entryFileName],
+      // chunks: ['manifest',  'vendor', entryFileName],
+      chunks: ['common', entryFileName],
       // chunksSortMode: 'dependency',//如果是单页面应用使用这个就行，上面chunks不需要设置
       minify: minifyParms
     }));
