@@ -8,10 +8,10 @@ let plugins = [
     $: "jquery",
     jQuery: "jquery",
     moment: "moment"
-  }),
+  }), //提供全局变量，不需要每个js都引入
   new webpack.optimize.CommonsChunkPlugin({
     name: 'common',
-    minChunks:2
+    minChunks:2 //这个很重要啊，数字才是能提取公共模块（第三方库，自定义js，公用css）的重点啊
   })
 ];
 const getEntry = (env) => {
