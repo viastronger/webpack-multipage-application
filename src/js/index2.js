@@ -1,5 +1,5 @@
 import 'rem'
-require('reset.css')
+import 'reset.css'
 import '../css/index2.css'
 import '../html/index2.html'
 

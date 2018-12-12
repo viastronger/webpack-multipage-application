@@ -30,7 +30,7 @@ const devWebpackConfig = {
         loader: 'html-loader'
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader?limit=4000&name=images/[name]-[hash:5].[ext]'
       }
     ]

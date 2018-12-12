@@ -90,15 +90,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpg)$/,
-        // loader: 'url-loader?limit=4096&name=images/[name]-[hash:5].[ext]',
-        use:[{
-          loader: "file-loader",
-          options:{
-            name:'[name]-[hash:5].[ext]',
-            outputPath:'./images',
-            publicPath:'../images'
-          }
-        }]
+        loader: 'url-loader?limit=4096&name=images/[name]-[hash:5].[ext]',
+        // use:[{
+        //   loader: "file-loader",
+        //   options:{
+        //     name:'[name]-[hash:5].[ext]',
+        //     outputPath:'./images',
+        //     publicPath:'./images'
+        //   }
+        // }]
         /*limit：
            表示的是一个阀值,如果当前我们资源中的图片大于4kb就从.js中剥离出来，如果小于4kb打包进.js中
            name:打包出来的图片，放在那个文件夹下，用什么文件名称命名

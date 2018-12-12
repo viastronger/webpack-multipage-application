@@ -39,20 +39,20 @@ const getEntry = (env) => {
     }
 
     entry[entryFileName] = files[i]
-    if (env == 'prod') {
-      filename = 'html/' + outputHtmlName + '.html'
-    } else {
-      filename = outputHtmlName + '.html'
-    }
+    // if (env == 'prod') {
+    //   filename = 'html/' + outputHtmlName + '.html'
+    // } else {
+    //   filename = outputHtmlName + '.html'
+    // }
     //生成html配置
     plugins.push(new HtmlWebpackPlugin({
       // 打包之后生成出来的html文件名
-      filename: filename,
+      filename:  outputHtmlName + '.html',
       // 每个html的模版
       template: './src/html/' + outputHtmlName + '.html',
       // 自动将引用插入body
       inject: true,
-      // favicon: './src/assets/lib/img/favicon.png',
+      favicon: 'favicon.ico',
       title: outputHtmlName,
       // 每个html引用的js模块，也可以在这里加上vendor等公用模块
       // chunks: ['manifest',  'vendor', entryFileName],
