@@ -22,8 +22,8 @@ const devWebpackConfig = {
         include: [path.join(__dirname, '../src/js',)]
       },
       {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        test: /\.(css|less)$/,
+        loader: 'style-loader!css-loader!px2rem-loader?remUnit=30!less-loader'
       },
       {
         test: /\.html$/,
@@ -54,6 +54,8 @@ const devWebpackConfig = {
     extensions: ['.js', '.json'],
     alias: {
       rem: path.join(__dirname, '../src/common/js/rem.js'),
+      common: path.join(__dirname, '../src/common/js/common.js'),
+      post: path.join(__dirname, '../src/common/js/post.js'),
       "reset.css": path.join(__dirname, '../src/common/css/reset.css'),
     }
   },

@@ -1,20 +1,255 @@
+body {
+  background-color: #f9f9f9
+}
 
-div{
-  background-color: hotpink;
-  margin-top: 0;
-  margin-bottom: 10px;
-  padding: 10px;
-}
-body{
-  img{
-    margin: 0 auto;
-    width: 500px;
+.head {
+  background: url("../images/index/head_bg.png") no-repeat center / cover;
+  height: 776px;
+  .header {
+    text-align: center;
+    height: 100px;
+    line-height: 100px;
+    font-size: 36px;
+    color: #fff;
+    position: relative;
+    > a {
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 23px;
+      height: 38px;
+      background: url("../images/index/return_icon.png") no-repeat center / cover;
+    }
   }
-  .a{
-    margin: 0 auto;
-    width: 500px;
-    height: 500px;
-    background: url("../images/a.jpg") no-repeat center / cover;
-    box-shadow: 0 0 0 #000;
+}
+
+.goods_info {
+  padding: 30px 30px 40px;
+  height: 150px;
+  font-size: 30px;
+  background-color: #fff;
+  span {
+    color: #FF2400;
   }
 }
+
+.main {
+  margin-top: 30px;
+  padding: 0 30px;
+  background-color: #fff;
+  .list_box {
+    .title {
+      height: 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 28px;
+      border-bottom: 1px solid #e8e8e7;
+      .look_more {
+        padding: 4px 30px 4px 6px;
+        font-size: 28px;
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          width: 16px;
+          height: 30px;
+          background: url("../images/index/mine_more_icon.png") no-repeat center / cover;
+          right: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+    }
+    .list1 {
+      overflow: hidden;
+      position: relative;
+      .wrapper {
+        width: 100%;
+        position: absolute;
+        top: -1.2rem;
+        left: 0;
+      }
+      .slide {
+        height: 120px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e8e8e7;
+        .left {
+          font-size: 28px;
+        }
+        .right {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          .time {
+            margin-right: 100px;
+            color: #999;
+            .reamin {
+              color: #FF2400;
+            }
+            p {
+              text-align: center;
+            }
+          }
+          .go_team_btn {
+            width: 160px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            border-radius: 6px;
+            background-color: #d19b4a;
+            font-size: 26px;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+.free_charge {
+  display: block;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: #D19B4A;
+  color: white;
+  font-size: 32px;
+}
+
+.layui-layer {
+  border-radius: 10px;
+}
+
+
+.more_team{
+  .title{
+    margin-top: 54px;
+    margin-bottom: 30px;
+    height: 45px;
+    background :url("../images/index/title@2x.png") no-repeat center / 237px 45px;
+  }
+  .wrapper{
+    overflow :auto;
+    height: 600px;
+    border-radius :0 0 10px 10px;
+  }
+  .tips{
+    text-align :center;
+    height: 80px;
+    line-height :80px;
+    font-size :24px;
+    color: #999;
+  }
+  .slide{
+    margin: 0 50px;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items :center;
+    border-bottom: 1px solid #e8e8e7;
+    &:last-child{
+      border-bottom: 1px solid #e8e8e7;
+    }
+    .left{
+      display :flex;
+      >img{
+        width: 60px;
+        height: 60px;
+        margin-right: 10px;
+      }
+      .mess{
+        font-size :24px;
+        color: #333;
+        .phone{
+          margin-right: 5px;
+        }
+        .reamin{
+          color :#FF2400;
+        }
+      }
+      .time{
+        font-size: 24px;
+        color :#999999;
+      }
+    }
+    .right{
+      .go_team_btn2{
+        display: block;
+        width: 150px;
+        height: 60px;
+        line-height: 60px;
+        text-align :center;
+        border-radius: 6px;
+        background-color: #d19b4a;
+        font-size :26px;
+        color: white;
+      }
+    }
+  }
+}
+.go_team_pop{
+  .body{
+    overflow :hidden;
+    border-radius :0 0 10px 10px;
+  }
+  .title{
+    text-align :center;
+    color: #333;
+    height: 100px;
+    line-height :130px;
+    font-size: 28px;
+    font-weight:bold;
+  }
+  .num{
+    margin-bottom: 60px;
+    color: #333;
+    font-size: 28px;
+    text-align :center;
+    .remain, .time_down{
+      color: #FF2400;
+    }
+  }
+
+
+  .icon{
+    padding: 0 30px;
+    display: flex;
+    justify-content :center;
+    align-items: center;
+    .item{
+      height: 150px;
+      margin-right: 24px;
+      display: flex;
+      flex-direction :column;
+      align-items :center;
+      color: #333333;
+      font-size :22px;
+      &:last-child{
+        margin-right: 0
+      }
+    }
+    img{
+      margin-bottom: 12px;
+      width: 70px;
+      height: 70px;
+    }
+  }
+  .join_team{
+    display: block;
+    margin: 0 60px 50px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    background-color: #D19B4A;
+    color :white;
+    font-size :32px;
+    border-radius :4px;
+  }
+}
+
+
+

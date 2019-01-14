@@ -4,8 +4,11 @@ div {
   margin-bottom: 10px;
   padding: 10px;
 }
+body {
+  text-align: center;
+}
 body img {
-  margin: 0 auto;
+  margin: 30px auto;
   width: 500px;
 }
 body .a {

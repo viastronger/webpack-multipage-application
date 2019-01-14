@@ -62,7 +62,7 @@ module.exports = {
         include: [path.join(__dirname, '../src/js',)]
       },
       {
-        test: /\.css$/,
+        test: /\.(css|less)$/,
         // loader: 'style-loader!css-loader'
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
@@ -70,6 +70,12 @@ module.exports = {
             //  参数importLoaders=1是为了预防css文件里面再import其他css文件，会使得import进来的不会自动加前缀
             {loader: 'css-loader', options: {importLoaders: 1}},
             // 自动添加浏览器前缀的插件,
+            {
+              loader: "px2rem-loader",
+              options: {
+                remUnit: 30
+              }
+            },
             {
               loader: 'postcss-loader', options: {
                 plugins:function(){
@@ -79,6 +85,9 @@ module.exports = {
                   ]
                 }
               }
+            },
+            {
+              loader: "less-loader"
             }
           ],
           publicPath: "../"
@@ -113,6 +122,8 @@ module.exports = {
     extensions: ['.js', '.json'],
     alias: {
       rem: path.join(__dirname, '../src/common/js/rem.js'),
+      common: path.join(__dirname, '../src/common/js/common.js'),
+      post: path.join(__dirname, '../src/common/js/post.js'),
       "reset.css": path.join(__dirname, '../src/common/css/reset.css'),
     }
   },
