@@ -1,6 +1,6 @@
 import 'rem'
-import 'reset.less'
-import '../less/index2.css'
+import 'reset.css'
+import '../less/index2.less'
 import '../../view/index2.html'
 
 

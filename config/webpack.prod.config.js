@@ -75,7 +75,7 @@ module.exports = {
           fallback: "style-loader",
           use: [
             //  参数importLoaders=1是为了预防css文件里面再import其他css文件，会使得import进来的不会自动加前缀
-            {loader: 'less-loader', options: {importLoaders: 1}},
+            {loader: 'css-loader', options: {importLoaders: 1}},
             // 自动添加浏览器前缀的插件,
             {
               loader: "px2rem-loader",
@@ -150,7 +150,7 @@ module.exports = {
       rem: path.join(__dirname, '../src/common/js/rem.js'),
       common: path.join(__dirname, '../src/common/js/common.js'),
       post: path.join(__dirname, '../src/common/js/post.js'),
-      "reset.css": path.join(__dirname, '../src/common/less/reset.css'),
+      "reset.css": path.join(__dirname, '../src/common/css/reset.css'),
     }
   },
   plugins: plugins.concat(utils.plugins)

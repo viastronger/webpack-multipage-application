@@ -1,4 +1,4 @@
 import 'rem'
-import 'reset.less'
-import '../less/index3.css'
+import 'reset.css'
+import '../less/index3.less'
 import '../../view/index3.html'

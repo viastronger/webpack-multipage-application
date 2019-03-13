@@ -1,5 +1,5 @@
 import 'rem'
-import 'reset.less'
+import 'reset.css'
 import '../less/index.less'
 import '../../view/index.html'
 import common from 'common'
