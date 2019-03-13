@@ -85,10 +85,10 @@ module.exports = {
             },
             {
               loader: 'postcss-loader', options: {
-                plugins:function(){
+                plugins: function () {
                   return [
                     require('postcss-import')(),        //一定要写在require("autoprefixer")前面，否则require("autoprefixer")无效
-                    require("autoprefixer")({browsers:['last 100 versions']})
+                    require("autoprefixer")({browsers: ['last 100 versions']})
                   ]
                 }
               }
@@ -105,7 +105,7 @@ module.exports = {
         loader: 'html-loader'
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         // loader: 'url-loader?limit=4096&name=images/[name]-[hash:5].[ext]',
         use: [
           {
