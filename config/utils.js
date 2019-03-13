@@ -16,7 +16,7 @@ let plugins = [
 ];
 const getEntry = (env) => {
   env = env || 'dev'
-  let files = glob.sync(srcDir + '/js/**/*.js'),
+  let files = glob.sync(srcDir + '/static/js/**/*.js'),
       entry = {},
       entryFileName,
       outputHtmlName,
@@ -40,16 +40,16 @@ const getEntry = (env) => {
 
     entry[entryFileName] = files[i]
     // if (env == 'prod') {
-    //   filename = 'html/' + outputHtmlName + '.html'
+    //   filename = 'view/' + outputHtmlName + '.view'
     // } else {
-    //   filename = outputHtmlName + '.html'
+    //   filename = outputHtmlName + '.view'
     // }
     //生成html配置
     plugins.push(new HtmlWebpackPlugin({
       // 打包之后生成出来的html文件名
       filename:  outputHtmlName + '.html',
       // 每个html的模版
-      template: './src/html/' + outputHtmlName + '.html',
+      template: './src/view/' + outputHtmlName + '.html',
       // 自动将引用插入body
       inject: true,
       favicon: 'favicon.ico',

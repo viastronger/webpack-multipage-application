@@ -1,7 +1,7 @@
 import 'rem'
-import 'reset.css'
-import '../css/index.less'
-import '../html/index.html'
+import 'reset.less'
+import '../less/index.less'
+import '../../view/index.html'
 import common from 'common'
 import post from "post"
 

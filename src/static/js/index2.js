@@ -1,7 +1,7 @@
 import 'rem'
-import 'reset.css'
-import '../css/index2.css'
-import '../html/index2.html'
+import 'reset.less'
+import '../less/index2.css'
+import '../../view/index2.html'
 
 
 const a = {

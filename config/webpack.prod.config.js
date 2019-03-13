@@ -28,7 +28,7 @@ const plugins = [
     parallel: true
   }),
   new ExtractTextPlugin({
-    filename: 'css/[name].[chunkhash:8].css',
+    filename: 'less/[name].[chunkhash:8].css',
     allChunks: true
   }),
   //  压缩css
@@ -70,12 +70,12 @@ module.exports = {
       },
       {
         test: /\.(css|less)$/,
-        // loader: 'style-loader!css-loader'
+        // loader: 'style-loader!less-loader'
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [
             //  参数importLoaders=1是为了预防css文件里面再import其他css文件，会使得import进来的不会自动加前缀
-            {loader: 'css-loader', options: {importLoaders: 1}},
+            {loader: 'less-loader', options: {importLoaders: 1}},
             // 自动添加浏览器前缀的插件,
             {
               loader: "px2rem-loader",
@@ -106,7 +106,22 @@ module.exports = {
       },
       {
         test: /\.(png|jpg)$/,
-        loader: 'url-loader?limit=4096&name=images/[name]-[hash:5].[ext]',
+        // loader: 'url-loader?limit=4096&name=images/[name]-[hash:5].[ext]',
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 4096,
+              name: 'images/[name]-[hash:5].[ext]'
+            }
+          },
+          {
+            loader: 'image-webpack-loader',// 压缩大于4m的图片
+            options: {
+              bypassOnDebug: true,
+            }
+          }
+        ]
         // use:[{
         //   loader: "file-loader",
         //   options:{
@@ -135,7 +150,7 @@ module.exports = {
       rem: path.join(__dirname, '../src/common/js/rem.js'),
       common: path.join(__dirname, '../src/common/js/common.js'),
       post: path.join(__dirname, '../src/common/js/post.js'),
-      "reset.css": path.join(__dirname, '../src/common/css/reset.css'),
+      "reset.css": path.join(__dirname, '../src/common/less/reset.css'),
     }
   },
   plugins: plugins.concat(utils.plugins)

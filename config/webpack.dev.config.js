@@ -23,7 +23,7 @@ const devWebpackConfig = {
       },
       {
         test: /\.(css|less)$/,
-        loader: 'style-loader!css-loader!px2rem-loader?remUnit=30!less-loader'
+        loader: 'style-loader!less-loader!px2rem-loader?remUnit=30!less-loader'
       },
       {
         test: /\.html$/,
@@ -56,7 +56,7 @@ const devWebpackConfig = {
       rem: path.join(__dirname, '../src/common/js/rem.js'),
       common: path.join(__dirname, '../src/common/js/common.js'),
       post: path.join(__dirname, '../src/common/js/post.js'),
-      "reset.css": path.join(__dirname, '../src/common/css/reset.css'),
+      "reset.css": path.join(__dirname, '../src/common/less/reset.css'),
     }
   },
   plugins: plugins.concat(utils.plugins),
