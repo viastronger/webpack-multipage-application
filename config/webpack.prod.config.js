@@ -116,7 +116,7 @@ module.exports = {
             }
           },
           {
-            loader: 'image-webpack-loader',// 压缩大于4m的图片
+            loader: 'image-webpack-loader',// 压缩大于4kb的图片
             options: {
               bypassOnDebug: true,
             }
