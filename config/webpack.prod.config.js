@@ -5,6 +5,7 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const distDir = path.join(__dirname, '../dist');
 const env = 'prod';
 
@@ -39,7 +40,13 @@ const plugins = [
   }),
   new webpack.HashedModuleIdsPlugin(),
   new webpack.optimize.ModuleConcatenationPlugin(),
-
+  // new CopyWebpackPlugin([
+  //   {
+  //     from: path.resolve(__dirname, 'common/js/rem2.js'),
+  //     to: 'static/js',
+  //     ignore: ['.*']
+  //   }
+  // ])
 ]
 
 module.exports = {
